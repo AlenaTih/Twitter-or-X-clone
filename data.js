@@ -1,6 +1,6 @@
 export let tweetsData = [   
     {
-        handle: `@Ron_Weasley 💎`,
+        handle: `@Ron_Weasley`,
         profilePic: `images/ron.png`,
         likes: 27,
         retweets: 10,
@@ -33,7 +33,7 @@ export let tweetsData = [
         uuid: '3c23454ee-c0f5-9g9g-9c4b-77835tgs2',
     },
         {
-        handle: `@Hermione`,
+        handle: `@Hermione 💎`,
         profilePic: `images/hermione.png`,
         likes: 10,
         retweets: 3,

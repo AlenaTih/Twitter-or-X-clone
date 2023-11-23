@@ -14,8 +14,6 @@ function sortingHat() {
     return randomProfilePic
 }
 
-console.log(sortingHat())
-
 let tweetsFromLocalStorage = JSON.parse( localStorage.getItem("myTweets") )
 
 if (tweetsFromLocalStorage) {
