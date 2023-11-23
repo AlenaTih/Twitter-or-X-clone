@@ -130,11 +130,10 @@ button {
 }
 
 .delete-btn {
-    /* background-color: #999; */
     background: none;
     font-size: 25px;
     font-weight: 400;
-    width: 60px;
+    padding: 0;
     margin-right: 15px;
 }
 
