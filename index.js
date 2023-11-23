@@ -6,7 +6,7 @@ const imagesArray = ["images/gryffindor.png",
                     "images/hufflepuff.png",
                     "images/ravenclaw.png",]
 
-function getRandomProfilePic() {
+function sortingHat() {
     const randomNumber = Math.floor(Math.random() * imagesArray.length)
 
     let randomProfilePic = imagesArray[randomNumber]
@@ -14,7 +14,7 @@ function getRandomProfilePic() {
     return randomProfilePic
 }
 
-console.log(getRandomProfilePic())
+console.log(sortingHat())
 
 let tweetsFromLocalStorage = JSON.parse( localStorage.getItem("myTweets") )
 
@@ -98,7 +98,7 @@ function handleTweetBtnClick(){
             if(tweetInput.value.trim()){
                     tweetsFromLocalStorage.unshift({
                         handle: `@Hogwarts student`,
-                        profilePic: getRandomProfilePic(),
+                        profilePic: sortingHat(),
                         likes: 0,
                         retweets: 0,
                         tweetText: tweetInput.value,
@@ -114,7 +114,7 @@ function handleTweetBtnClick(){
             if(tweetInput.value.trim()){
                 tweetsData.unshift({
                     handle: `@Hogwarts student`,
-                    profilePic: getRandomProfilePic(),
+                    profilePic: sortingHat(),
                     likes: 0,
                     retweets: 0,
                     tweetText: tweetInput.value,
@@ -237,7 +237,7 @@ function getFeedHtml(){
     <div class="hidden" id="replies-${tweet.uuid}">
         ${repliesHtml}
         <div class="reply-input-area">
-			<img src="images/scrimbalogo.png" class="profile-pic">
+			<img src="images/owl.png" class="profile-pic">
 			<textarea placeholder="What's happening?" id="reply-input-${tweet.uuid}"></textarea>
 		</div>
 		<button data-answer="${tweet.uuid}">Reply</button>
