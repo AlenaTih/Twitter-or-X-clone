@@ -144,8 +144,8 @@ function handleReplyBtnClick(tweetId) {
         
                 targetTweetObj.replies.push(
                     {
-                        handle: `@Scrimba`,
-                        profilePic: `images/scrimbalogo.png`,
+                        handle: `@Hedwig`,
+                        profilePic: `images/owl.png`,
                         tweetText: replyInput.value,
                     },
                 )
