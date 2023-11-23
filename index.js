@@ -1,5 +1,13 @@
 import { tweetsData } from './data.js'
-import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
+import { v4 as uuidv4 } from 'https://jspm.dev/uuid'
+
+let tweetsFromLocalStorage = JSON.parse( localStorage.getItem("myTweets") )
+
+if (tweetsFromLocalStorage) {
+    render()
+} else {
+    localStorage.setItem( "myTweets", JSON.stringify(tweetsData) )
+}
 
 document.addEventListener('click', function(e){
     if(e.target.dataset.like){
@@ -14,10 +22,17 @@ document.addEventListener('click', function(e){
     else if(e.target.id === 'tweet-btn'){
         handleTweetBtnClick()
     }
-})
+    else if (e.target.dataset.answer) {
+        handleReplyBtnClick(e.target.dataset.answer)
+    }
+    else if (e.target.dataset.delete) {
+        deleteTweet(e.target.dataset.delete)
+    }
+}
+)
  
 function handleLikeClick(tweetId){ 
-    const targetTweetObj = tweetsData.filter(function(tweet){
+    const targetTweetObj = tweetsFromLocalStorage.filter(function(tweet){
         return tweet.uuid === tweetId
     })[0]
 
@@ -25,14 +40,18 @@ function handleLikeClick(tweetId){
         targetTweetObj.likes--
     }
     else{
-        targetTweetObj.likes++ 
+        targetTweetObj.likes++
     }
     targetTweetObj.isLiked = !targetTweetObj.isLiked
+
+    // Save likes to localStorage
+    localStorage.setItem( "myTweets", JSON.stringify(tweetsFromLocalStorage) )
+
     render()
 }
 
 function handleRetweetClick(tweetId){
-    const targetTweetObj = tweetsData.filter(function(tweet){
+    const targetTweetObj = tweetsFromLocalStorage.filter(function(tweet){
         return tweet.uuid === tweetId
     })[0]
     
@@ -43,6 +62,10 @@ function handleRetweetClick(tweetId){
         targetTweetObj.retweets++
     }
     targetTweetObj.isRetweeted = !targetTweetObj.isRetweeted
+
+    // Save retweets (number of retweets) to localStorage
+    localStorage.setItem( "myTweets", JSON.stringify(tweetsFromLocalStorage) )
+
     render() 
 }
 
@@ -53,28 +76,87 @@ function handleReplyClick(replyId){
 function handleTweetBtnClick(){
     const tweetInput = document.getElementById('tweet-input')
 
-    if(tweetInput.value){
-        tweetsData.unshift({
-            handle: `@Scrimba`,
-            profilePic: `images/scrimbalogo.png`,
-            likes: 0,
-            retweets: 0,
-            tweetText: tweetInput.value,
-            replies: [],
-            isLiked: false,
-            isRetweeted: false,
-            uuid: uuidv4()
-        })
-    render()
+        // Save new tweets to localStorage
+
+        if (tweetsFromLocalStorage) {
+            
+            if(tweetInput.value.trim()){
+                    tweetsFromLocalStorage.unshift({
+                        handle: `@Scrimba`,
+                        profilePic: `images/scrimbalogo.png`,
+                        likes: 0,
+                        retweets: 0,
+                        tweetText: tweetInput.value,
+                        replies: [],
+                        isLiked: false,
+                        isRetweeted: false,
+                        uuid: uuidv4()
+                    })
+                    localStorage.setItem( "myTweets", JSON.stringify(tweetsFromLocalStorage))
+                    render()
+            }
+        } else {
+            if(tweetInput.value.trim()){
+                tweetsData.unshift({
+                    handle: `@Scrimba`,
+                    profilePic: `images/scrimbalogo.png`,
+                    likes: 0,
+                    retweets: 0,
+                    tweetText: tweetInput.value,
+                    replies: [],
+                    isLiked: false,
+                    isRetweeted: false,
+                    uuid: uuidv4()
+                })
+            localStorage.setItem( "myTweets", JSON.stringify(tweetsData) )
+            tweetsFromLocalStorage = JSON.parse( localStorage.getItem("myTweets") )
+            render()
+        }
+    }
     tweetInput.value = ''
+}
+
+function handleReplyBtnClick(tweetId) {
+
+    const replyInput = document.getElementById(`reply-input-${tweetId}`)
+
+        if (replyInput.value.trim()) {
+            console.log(tweetId)
+    
+                const targetTweetObj = tweetsFromLocalStorage.filter(function(tweet){
+                    return tweet.uuid === tweetId
+                })[0]
+        
+                targetTweetObj.replies.push(
+                    {
+                        handle: `@Scrimba`,
+                        profilePic: `images/scrimbalogo.png`,
+                        tweetText: replyInput.value,
+                    },
+                )
+    
+                localStorage.setItem( "myTweets", JSON.stringify(tweetsFromLocalStorage) )
+                
+                render()
+    
+        replyInput.value = ""
     }
 
 }
 
+function deleteTweet(tweetId) {
+
+    tweetsFromLocalStorage = tweetsFromLocalStorage.filter( function(tweet) {
+        return tweet.uuid !== tweetId
+    })
+                
+    render()
+}
+
 function getFeedHtml(){
     let feedHtml = ``
-    
-    tweetsData.forEach(function(tweet){
+
+    tweetsFromLocalStorage.forEach(function(tweet){
         
         let likeIconClass = ''
         
@@ -111,7 +193,7 @@ function getFeedHtml(){
 <div class="tweet">
     <div class="tweet-inner">
         <img src="${tweet.profilePic}" class="profile-pic">
-        <div>
+        <div class="tweet-post">
             <p class="handle">${tweet.handle}</p>
             <p class="tweet-text">${tweet.tweetText}</p>
             <div class="tweet-details">
@@ -134,10 +216,16 @@ function getFeedHtml(){
                     ${tweet.retweets}
                 </span>
             </div>   
-        </div>            
+        </div>  
+        <button class="delete-btn" data-delete="${tweet.uuid}">🗑</button>          
     </div>
     <div class="hidden" id="replies-${tweet.uuid}">
         ${repliesHtml}
+        <div class="reply-input-area">
+			<img src="images/scrimbalogo.png" class="profile-pic">
+			<textarea placeholder="What's happening?" id="reply-input-${tweet.uuid}"></textarea>
+		</div>
+		<button data-answer="${tweet.uuid}">Reply</button>
     </div>   
 </div>
 `
@@ -150,4 +238,3 @@ function render(){
 }
 
 render()
-

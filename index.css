@@ -6,22 +6,22 @@ html, body {
 
 /* typography and icons */
 
-h1{
+h1 {
     color: #0F8CDF;
     margin-bottom: 10px;
     font-size: 20px;
 }
 
-i{
+i {
     font-size: 15px;
     cursor: pointer;
 }
 
-.fa-solid{
+.fa-solid {
     color: #999;
 }
 
-.liked{
+.liked {
     color: red;
 }
 
@@ -31,12 +31,14 @@ i{
 
 /* layout */
 
-main, header{
+.container {
+    display: flex;
+    flex-direction: column;
     width: 290px;
     margin: 0 auto;
 }
 
-header{
+header {
     padding-bottom: 25px;
 }
 
@@ -48,7 +50,7 @@ header{
 
 /* textareas + btn */
 
-textarea{
+textarea {
     border: none;
     resize: none;
     padding: 10px;
@@ -59,7 +61,7 @@ textarea{
     line-height: 30px;
 }
 
-button{
+button {
     background-color: #1DA1F2;
     border: none;
     color: white;
@@ -71,48 +73,54 @@ button{
     font-weight: 600;
 }
 
+.delete-btn {
+    background-color: #999;
+    font-weight: 400;
+
+}
+
 /* tweet */
 
-.tweet{
+.tweet {
     border-top: 1px solid lightgray;
     padding: 20px 0 0 0;
     width: 100%;
     margin: 15px 0;
 }
 
-.tweet-inner{
+.tweet-inner {
     display: flex;
     align-items: flex-start;
     gap: 10px;
 }
 
-.tweet-details{
+.tweet-details {
     display: flex;
     font-size: 13px;
     justify-content: space-between;
     width: 160px;
 }
 
-.tweet-detail{
+.tweet-detail {
     display: flex;
     gap: 4px;
 }
 
-.tweet-reply{
+.tweet-reply {
     border-top: 1px solid lightgray;
     padding: 20px 0 0 0px;
     margin: 10px 0 10px 40px;
     width: 80%;
 }
 
-.handle{
+.handle {
     font-size: 12px;
     font-weight: 500;
     color: #555;
     margin-top: 0;
 }
 
-.tweet-text{
+.tweet-text {
     width: 207px;
     font-size: 14px;
     line-height: 20px;
@@ -120,13 +128,62 @@ button{
 
 /* images */
 
-.profile-pic{
+.profile-pic {
     border: 1px solid lightgray;
     border-radius: 50%;
     width: 48px;
 }
 
 /* utility */
-.hidden{
+
+.hidden {
     display: none;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    /* body {
+        background-color:
+    } */
+
+    header {
+        margin-top: 40px;
+    }
+
+    .container {
+        width: 60%;
+        align-items: center;
+    }
+
+    button {
+        width: 40%;
+    }
+
+    .delete-btn {
+        width: 20%;
+    }
+
+    .feed {
+        margin: 40px 0;
+    }
+
+    .tweet-inner {
+        gap: 20px;
+    }
+
+    .tweet-post {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .tweet-details {
+        width: 100%;
+    }
+
+    .tweet-text {
+        width: 100%;
+        margin-top: 0;
+    }
 }
