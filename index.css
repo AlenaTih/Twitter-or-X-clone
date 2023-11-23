@@ -131,7 +131,6 @@ button {
 
 .delete-btn {
     background: none;
-    font-size: 25px;
     font-weight: 400;
     padding: 0;
     margin-right: 15px;
@@ -268,7 +267,9 @@ a:hover, a:active, a:visited {
     }
 
     .delete-btn {
+        font-size: 25px;
         width: 80px;
+        margin: 0;
     }
 
     .reply-btn {
