@@ -1,21 +1,18 @@
 import { tweetsData } from './data.js'
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid'
 
-const imagesArray = ["images/gryffindor.jpp",
-                    "images/slytherin.jpp",
-                    "images/hufflepuff.jpp",
-                    "images/ravenclaw.jpp",]
+const imagesArray = ["images/gryffindor.png",
+                    "images/slytherin.png",
+                    "images/hufflepuff.png",
+                    "images/ravenclaw.png",]
 
 function getRandomProfilePic() {
     const randomNumber = Math.floor(Math.random() * imagesArray.length)
-    // return imagesArray[randomNumber]
 
     let randomProfilePic = imagesArray[randomNumber]
 
     return randomProfilePic
 }
-
-// let randomProfilePic = getRandomProfilePic()
 
 console.log(getRandomProfilePic())
 
@@ -100,7 +97,7 @@ function handleTweetBtnClick(){
             
             if(tweetInput.value.trim()){
                     tweetsFromLocalStorage.unshift({
-                        handle: `@Scrimba`,
+                        handle: `@Hogwarts student`,
                         profilePic: getRandomProfilePic(),
                         likes: 0,
                         retweets: 0,
@@ -116,7 +113,7 @@ function handleTweetBtnClick(){
         } else {
             if(tweetInput.value.trim()){
                 tweetsData.unshift({
-                    handle: `@Scrimba`,
+                    handle: `@Hogwarts student`,
                     profilePic: getRandomProfilePic(),
                     likes: 0,
                     retweets: 0,
