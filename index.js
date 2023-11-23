@@ -238,9 +238,9 @@ function getFeedHtml(){
         ${repliesHtml}
         <div class="reply-input-area">
 			<img src="images/owl.png" class="profile-pic">
-			<textarea placeholder="What's happening?" id="reply-input-${tweet.uuid}"></textarea>
+			<textarea placeholder="What's happening?" class="reply-input" id="reply-input-${tweet.uuid}"></textarea>
 		</div>
-		<button data-answer="${tweet.uuid}">Reply</button>
+		<button class="reply-btn" data-answer="${tweet.uuid}">Reply</button>
     </div>   
 </div>
 `

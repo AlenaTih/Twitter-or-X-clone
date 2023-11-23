@@ -5,8 +5,10 @@ html, body {
 }
 
 body {
-    background-image: url("images/hogwarts.jpg");
+    color: #090909;
+    background-image: url("images/hogwarts-train.jpg");
     background-size: cover;
+    background-position: center;
     margin: 60px 0 80px 0;
 }
 
@@ -19,7 +21,7 @@ h1 {
 }
 
 h4 {
-    color: white;
+    color: #FCF3F6;
     font-size: 12px;
     font-weight: 400;
     margin: 0;
@@ -62,7 +64,16 @@ header {
 .tweet-input-area {
     display: flex;
     align-items: flex-start;
+    /* width: 100%; */
     gap: 10px;
+}
+
+.reply-input-area {
+    display: flex;
+    align-items: flex-start;
+    width: 80%;
+    gap: 10px;
+    margin-left: 15px;
 }
 
 .bottom {
@@ -88,6 +99,7 @@ header {
 /* textareas + btn */
 
 textarea {
+    background-color: #FAFDFF;
     border: none;
     resize: none;
     padding: 10px;
@@ -102,7 +114,7 @@ textarea {
 button {
     background-color: #1DA1F2;
     border: none;
-    color: white;
+    color: #FAFDFF;
     padding: 10px 19px;
     border-radius: 20px;
     width: 100%;
@@ -112,11 +124,15 @@ button {
     font-weight: 600;
 }
 
+.reply-btn {
+    width: 70%;
+    margin-left: 15px;
+}
+
 .delete-btn {
     background-color: #999;
     font-weight: 400;
     width: 60px;
-
 }
 
 /* tweet */
@@ -161,7 +177,8 @@ button {
 .handle {
     font-size: 12px;
     font-weight: 500;
-    color: #555;
+    /* color: #555; */
+    color: #343434;
     margin-top: 0;
 }
 
@@ -169,6 +186,10 @@ button {
     width: 207px;
     font-size: 14px;
     line-height: 20px;
+}
+
+.reply-input {
+    width: 60%;
 }
 
 /* images */
@@ -188,17 +209,26 @@ button {
 /* Links */
 
 a {
-    color: #6989FA;
+    color: #D4E3FF;
 }
 
 a:hover, a:active, a:visited {
-    color: #2E5CB5;
+    color: #7DA7FB;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    h1 {
+        font-size: 40px;
+        margin: auto;
+    }
+    
     h4 {
         font-size: 15px;
+    }
+
+    i {
+        font-size: 18px;
     }
 
     header {
@@ -211,12 +241,27 @@ a:hover, a:active, a:visited {
         padding: 40px;
     }
 
-    /* .tweet-input-area {
-        margin-top: 35px;
-    } */
+    .tweet-input-area {
+        justify-content: center;
+        width: 60%;
+        gap: 20px;
+    }
+
+    .reply-input-area {
+        gap: 20px;
+    }
+
+    .profile-pic {
+        width: 60px;
+    }
+
+    textarea {
+        height: 100px;
+        padding: 18px 25px;
+    }
 
     button {
-        width: 40%;
+        width: 60%;
     }
 
     .delete-btn {
@@ -224,8 +269,17 @@ a:hover, a:active, a:visited {
         width: 80px;
     }
 
+    .reply-btn {
+        width: 60%;
+        margin-left: 15px;
+    }
+
     .feed {
-        margin: 40px 0;
+        margin: 40px 0 0 0;
+    }
+
+    .tweet {
+        padding: 40px 0 20px 0;
     }
 
     .tweet-inner {
@@ -239,12 +293,17 @@ a:hover, a:active, a:visited {
         gap: 20px;
     }
 
-    .tweet-details {
-        width: 100%;
+    .handle {
+        font-size: 15px;
     }
 
     .tweet-text {
+        font-size: 18px;
         width: 100%;
         margin-top: 0;
+    }
+
+    .tweet-details {
+        width: 100%;
     }
 }
