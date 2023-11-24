@@ -4,7 +4,7 @@ export let tweetsData = [
         profilePic: `images/ron.png`,
         likes: 27,
         retweets: 10,
-        tweetText: `If you saw my Scabbers 🐀, reply here, please! She’s lost again 🙄`,
+        tweetText: `If you saw my Scabbers 🐀, reply here, please! He’s lost again 🙄`,
         replies: [],
         isLiked: false,
         isRetweeted: false,
