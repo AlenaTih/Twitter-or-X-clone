@@ -109,6 +109,7 @@ textarea {
     font-size: 15px;
     line-height: 30px;
     border-radius: 20px;
+    box-shadow: 0 4px 12px #999;
 }
 
 button {
@@ -122,6 +123,15 @@ button {
     cursor: pointer;
     font-size: 20px;
     font-weight: 600;
+}
+
+#tweet-btn, .reply-btn {
+    box-shadow: 0 4px 12px #999;
+}
+
+#tweet-btn:hover,
+.reply-btn:hover {
+    background-color: #1FA0E8;
 }
 
 .reply-btn {
