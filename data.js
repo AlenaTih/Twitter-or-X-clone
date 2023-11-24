@@ -19,7 +19,7 @@ export let tweetsData = [
         replies: [
                   {
                 handle: `@HarryPotter ✅`,
-                profilePic: `images/harry.png`,
+                profilePic: `images/harry-potter.png`,
                 tweetText: `I got it!`,
             },
                   {
