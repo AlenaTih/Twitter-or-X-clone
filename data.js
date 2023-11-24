@@ -11,7 +11,7 @@ export let tweetsData = [
         uuid: '4b161eee-c0f5-4545-9c4b-8562944223ee',
     },    
     {
-        handle: `@Dumldedore ✅`,
+        handle: `@Dumbledore ✅`,
         profilePic: `images/dumbledore.png`,
         likes: 6500,
         retweets: 234,
@@ -23,7 +23,7 @@ export let tweetsData = [
                 tweetText: `I got it!`,
             },
                   {
-                handle: `@Dumldedore ✅`,
+                handle: `@Dumbledore ✅`,
                 profilePic: `images/dumbledore.png`,
                 tweetText: `Okay, I will tell everybody – Scrimba!`,
             },
